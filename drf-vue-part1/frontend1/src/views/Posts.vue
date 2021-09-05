@@ -42,7 +42,7 @@
 
 <script>
 import { getAPI } from '../axios-api'
-import Navbar from '../components/Navbar.vue'
+import Navbar from '../components/Navbar'
 import { mapState } from 'vuex'
 
 export default {

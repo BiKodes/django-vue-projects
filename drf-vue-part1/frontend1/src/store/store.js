@@ -1,13 +1,15 @@
-import { createStore } from 'vuex'
+import Vue from 'vue'
+import Vuex from 'vuex'
 import { getAPI } from '../axios-api'
 
-export default createStore({
+Vue.use(Vuex)
+
+export default new Vuex.Store({
   state: {
     accessToken: null,
     refreshToken: null,
     APIData: ''
   },
-
   mutations: {
     updateStorage(state, { access, refresh}) {
       state.accessToken = access
@@ -43,15 +45,15 @@ export default createStore({
         .then(response => {
           context.commit('updateStorage', {
             access: response.data.access,
-            refresh: response.data.refresh
+            refresh:response.data.refresh
           })
         })
         .catch(err => {
-          console.log(err)
+          return err
         })
       })
     }
-
+  },
+  modules: {
   }
-
 })
